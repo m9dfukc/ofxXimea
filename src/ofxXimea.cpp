@@ -59,9 +59,9 @@ void ofxXimea::selectDevice(){
 				cout <<info_c<<"\n";
 			}
 
-			cout<<"xiOpenDevice at index = ";
-			cin>>(int)deviceID;
-			cout<<"\n\n";
+			cout << "xiOpenDevice at index = " << (int)deviceID << endl << endl;
+            // cin>>(int)deviceID;
+			// cout<<"\n\n";
 		}
 		//retrieving a handle to the camera device 
 		CHECK_FAIL("xiOpenDevice", xiOpenDevice(deviceID, &xiH));
@@ -488,7 +488,7 @@ void ofxXimea::update() {
 					ofxcvcolor.allocate(image.width, image.height); 
 				}
 				ofxcvcolor.setFromPixels((const unsigned char *)image.bp, image.width, image.height);
-				ofxcvcolor.getPixelsRef().swapRgb();
+				ofxcvcolor.getPixels().swapRgb();
 				break;
 				
 			case XI_RGB32:
@@ -557,7 +557,13 @@ void ofxXimea::close() {
 }
 
 //----------
+#ifdef WIN32
+// win32 only
 #include "m3ErrorCodes.h"
+#else
+#include <m3api/m3ErrorCodes.h>
+#endif
+
 string ofxXimea::REPORT_ERR(XI_RETURN err){
 
 	switch (err){
