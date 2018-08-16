@@ -11,8 +11,9 @@ Tested with macOs 10.12.x and of v0.10.0.
 ofxOpenCV is required.
 
 
-## Installation
+## Setup
 
 1. Download the [Ximea OSX software package](http://www.ximea.com/support/wiki/apis/XIMEA_OSX_Software_Package).
 2. Open the DMG file
-3. Run install application
+3. Copy the "m3api.framework" to the "ofxXimea/libs" folder
+4. Use the projectGenerator to generate the "example" xCode project
